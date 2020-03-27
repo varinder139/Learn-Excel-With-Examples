@@ -1,0 +1,195 @@
+package varinder.study.learnexcelwithexamples;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+
+import java.util.ArrayList;
+
+public class fomulas_function extends AppCompatActivity implements SearchView.OnQueryTextListener {
+    private static final String TAG = "fomulas_function";
+
+    private AdView mAdView;
+
+    private Context mcontext;
+
+    ArrayList<String> titleArrayList;
+
+    private RecyclerView mRecyclerView;
+
+    TitleAdaptor adaptor;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_fomulas_function);
+
+        // AddMob code is just as below metioned
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        // AddMob ended
+
+       // below mentioned added the all functions web files
+        mcontext = fomulas_function.this;
+
+        titleArrayList = new ArrayList<String>();
+
+        titleArrayList.add(Constants.Introduction_Functions_And_Formulas);
+        titleArrayList.add(Constants.count_function);
+        titleArrayList.add(Constants.countif_with_numeric_criteria);
+        titleArrayList.add(Constants.countif_with_text_criteria);
+        titleArrayList.add(Constants.countif_for_count_the_booleans);
+        titleArrayList.add(Constants.countif_for_count_the_errors);
+        titleArrayList.add(Constants.countif_with_or_criteria);
+        titleArrayList.add(Constants.countif_with_and_criteria);
+        titleArrayList.add(Constants.countifs_example);
+        titleArrayList.add(Constants.sum_example);
+        titleArrayList.add(Constants.sum_range_with_errors);
+        titleArrayList.add(Constants.aggregate_example);
+        titleArrayList.add(Constants.sumif_with_numeric_criteria);
+        titleArrayList.add(Constants.sumif_with_date_criteria);
+        titleArrayList.add(Constants.sumif_with_or_criteria);
+        titleArrayList.add(Constants.sumif_with_and_criteria);
+        titleArrayList.add(Constants.sumifs_example);
+        titleArrayList.add(Constants.averageIf_and_averageIfs);
+        titleArrayList.add(Constants.sumproduct_basic_use);
+        titleArrayList.add(Constants.sumproduct_advance_use);
+        titleArrayList.add(Constants.if_logical_functions);
+        titleArrayList.add(Constants.and_logical_functions);
+        titleArrayList.add(Constants.or_logical_functions);
+        titleArrayList.add(Constants.not_logical_functions);
+        titleArrayList.add(Constants.relative_reference_functions);
+        titleArrayList.add(Constants.absolute_reference_example);
+        titleArrayList.add(Constants.mixed_reference_example);
+        titleArrayList.add(Constants.left_right_mid_len_find_substitute);
+        titleArrayList.add(Constants.date_and_time_functions);
+        titleArrayList.add(Constants.date_and_time_formats);
+        titleArrayList.add(Constants.concatenate_function);
+        titleArrayList.add(Constants.vlookup_functions);
+        titleArrayList.add(Constants.index_and_match);
+        titleArrayList.add(Constants.hlookup_function);
+        titleArrayList.add(Constants.financial_functions);
+        titleArrayList.add(Constants.statistical_functions);
+        titleArrayList.add(Constants.round_function);
+        titleArrayList.add(Constants.roundUp_function);
+        titleArrayList.add(Constants.roundDown_function);
+        titleArrayList.add(Constants.formula_errors);
+        titleArrayList.add(Constants.array_formulas);
+        titleArrayList.add(Constants.sort_example);
+        titleArrayList.add(Constants.filter_example);
+        titleArrayList.add(Constants.conditional_formatting);
+        titleArrayList.add(Constants.charts_examples);
+        titleArrayList.add(Constants.pivot_tables);
+        titleArrayList.add(Constants.tables_example);
+
+
+
+        mRecyclerView = (RecyclerView)findViewById(R.id.title_layout_recyclerview);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+
+         adaptor = new TitleAdaptor(mcontext, titleArrayList, new CustomItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+
+               // Toast.makeText(mcontext, "clicked"+titleArrayList.get(position), Toast.LENGTH_SHORT).show();
+
+                Intent desIntent = new Intent(mcontext, DescriptionActivity.class);
+
+                desIntent.putExtra("tiles", titleArrayList.get(position));
+
+                startActivity(desIntent);
+            }
+        });
+
+        mRecyclerView.setAdapter(adaptor);
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView)menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String userInput = newText.toLowerCase();
+        ArrayList<String> newList = new ArrayList<>();
+
+        for (String name : titleArrayList){
+            if (name.toLowerCase().contains(userInput)){
+                newList.add(name);
+            }
+        }
+        adaptor.updateList(newList);
+
+        return true;
+    }
+}
+
+design for formula_function class:
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".fomulas_function"
+    >
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/title_layout_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="352dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="0dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-1606790808026247/1960735504">
+
+    </com.google.android.gms.ads.AdView>
+
+</RelativeLayout>
