@@ -1,0 +1,52 @@
+package varinder.study.learnexcelwithexamples;
+
+public class Constants {
+    public static final String Introduction_Functions_And_Formulas = "Introduction_Functions_And_Formulas";
+    public static final String count_function = "Count_Function";
+    public static final String countif_with_numeric_criteria = "Countif_with_Numeric_Criteria";
+    public static final String countif_with_text_criteria = "Countif_with_Text_Criteria";
+    public static final String countif_for_count_the_booleans = "Countif_for_Count_the_Booleans";
+    public static final String countif_for_count_the_errors = "Countif_for_Count_the_Errors";
+    public static final String countif_with_or_criteria = "Countif_with_Or_Criteria";
+    public static final String countif_with_and_criteria = "Countif_with_AND_Criteria";
+    public static final String countifs_example = "Countifs_Example";
+    public static final String sum_example = "Sum_Example";
+    public static final String sum_range_with_errors = "Sum_Range_With_Errors";
+    public static final String aggregate_example = "Aggregate_Example";
+    public static final String sumif_with_numeric_criteria = "Sumif_with_Numeric_Criteria";
+    public static final String sumif_with_date_criteria = "Sumif_with_Date_Criteria";
+    public static final String sumif_with_or_criteria = "Sumif_with_OR_Criteria";
+    public static final String sumif_with_and_criteria = "Sumif_with_AND_Criteria";
+    public static final String sumifs_example = "Sumifs_Example";
+    public static final String averageIf_and_averageIfs = "AverageIf_and_AverageIfs";
+    public static final String sumproduct_basic_use = "Sumproduct_Basic_Use";
+    public static final String sumproduct_advance_use = "Sumproduct_Advance_Use";
+    public static final String if_logical_functions = "IF_Logical_Functions";
+    public static final String and_logical_functions = "AND_Logical_Functions";
+    public static final String or_logical_functions = "OR_Logical_Functions";
+    public static final String not_logical_functions = "NOT_Logical_Functions";
+    public static final String relative_reference_functions = "Relative_Reference_Functions";
+    public static final String absolute_reference_example = "Absolute_Reference_Example";
+    public static final String mixed_reference_example = "Mixed_Reference_Example";
+    public static final String left_right_mid_len_find_substitute = "Left_Right_Mid_Len_Find_Substitute";
+    public static final String date_and_time_functions = "Date_And_Time_Functions";
+    public static final String date_and_time_formats = "Date_And_Time_Formats";
+    public static final String concatenate_function = "Concatenate_Function";
+    public static final String vlookup_functions = "Vlookup_Functions";
+    public static final String index_and_match = "Index_And_Match";
+    public static final String hlookup_function = "Hlookup_Function";
+    public static final String financial_functions = "Financial_Functions";
+    public static final String statistical_functions = "Statistical_Functions";
+    public static final String round_function = "Round_Function";
+    public static final String roundUp_function = "RoundUp_Function";
+    public static final String roundDown_function = "RoundDown_Function";
+    public static final String formula_errors = "Formula_Errors";
+    public static final String array_formulas = "Array_Formulas";
+    public static final String sort_example = "Sort_Example";
+    public static final String filter_example = "Filter_Example";
+    public static final String conditional_formatting = "Conditional_Formatting";
+    public static final String charts_examples = "Charts_Examples";
+    public static final String pivot_tables = "Pivot_Tables";
+    public static final String tables_example = "Tables_Example";
+
+}
